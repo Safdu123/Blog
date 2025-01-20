@@ -122,6 +122,155 @@
         </div>
     </section>
 
+
+<style>
+
+
+    /* Background Video */
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Category Section */
+    .category-section {
+      padding: 100px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category-title {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #f4f4f4;
+      font-weight: 1200;
+      animation: fadeInDown 1.5s ease;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .category {
+      width: 180px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 18px;
+      color: #f4f4f4;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .category:hover {
+      background-color: rgba(40, 167, 69, 0.8); /* Green hover effect */
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(40, 167, 69, 0.5);
+    }
+
+    .category.active {
+      background-color: rgba(0, 123, 255, 0.8); /* Blue for active category */
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Animation for Scroll Reveal */
+    .categories.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .category {
+        width: 45%;
+        height: 80px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .category {
+        width: 100%;
+        height: 70px;
+      }
+    }
+
+    /* Keyframes for Title Animation */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <video class="background-video" autoplay muted loop>
+    <source src="your-video-file.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Category Section -->
+  <div class="category-section">
+    <h2 class="category-title">Explore Our Beautiful Categories</h2>
+    <div class="categories">
+      <div class="category" onclick="activateCategory(this)">Physics</div>
+      <div class="category" onclick="activateCategory(this)">Chemistry</div>
+      <div class="category" onclick="activateCategory(this)">Tech</div>
+      <div class="category" onclick="activateCategory(this)">Biology</div>
+      <div class="category" onclick="activateCategory(this)">History</div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to toggle the active class on a category
+    function activateCategory(element) {
+      // Remove the "active" class from all categories
+      const categories = document.querySelectorAll('.category');
+      categories.forEach((category) => category.classList.remove('active'));
+
+      // Add the "active" class to the clicked category
+      element.classList.add('active');
+    }
+
+    // Scroll Reveal Animation
+    window.addEventListener('scroll', () => {
+      const categories = document.querySelector('.categories');
+      const sectionPosition = categories.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight;
+
+      if (sectionPosition < screenPosition - 100) {
+        categories.classList.add('visible');
+      }
+    });
+  </script>
+    
+
+
+
+    
+
     <!-- Story Stream Section -->
    
     <footer class="footer">
